@@ -4,8 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
+    "build": "ng build --prod --commonChunk=true --lazyModules --buildOptimizer=true",
+    "buildStats": "ng build --prod --commonChunk=true --lazyModules --buildOptimizer=true --stats-json",
+    "analyze": "webpack-bundle-analyzer dist/hospital/stats-es5.json -p 1234",
+    "test": "ng test --no-watch --no-progress --browsers=ChromeHeadless --code-coverage",
+    "testDebug": "ng test --watch=true --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -42,6 +45,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "webpack-bundle-analyzer": "^3.6.0"
   }
 }

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { ProgressComponent } from './pages/progress/progress.component';
-import { Graficas1Component } from './pages/graficas/graficas1/graficas1.component';
-import { LoginComponent } from './pages/login/login.component';
-import { PagesComponent } from './pages/pages.component';
-import { NopagefoundComponent } from '../core/nopagefound/nopagefound.component';
-import { RegisterComponent } from './pages/login/register.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProgressComponent } from './progress/progress.component';
+import { Graficas1Component } from './graficas/graficas1/graficas1.component';
+import { LoginComponent } from './login/login.component';
+import { PagesComponent } from './pages.component';
+import { NopagefoundComponent } from '../../core/nopagefound/nopagefound.component';
+import { RegisterComponent } from './login/register.component';
 const routes: Routes = [
   { path: '',
     component: PagesComponent,
