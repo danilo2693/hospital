@@ -9,6 +9,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CoreModule } from 'src/app/core/core.module';
 import { RegisterComponent } from './login/register.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RegisterComponent } from './login/register.component';
     DashboardComponent,
     ProgressComponent,
     Graficas1Component,
+    SharedModule
   ]
 })
 export class PagesModule { }
