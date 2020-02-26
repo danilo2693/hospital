@@ -10,6 +10,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CoreModule } from 'src/app/core/core.module';
 import { RegisterComponent } from './login/register.component';
 import { ChartsModule } from 'ng2-charts';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { ServiceModule } from '../../shared/services/service.module';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,13 @@ import { ChartsModule } from 'ng2-charts';
     Graficas1Component,
     LoginComponent,
     RegisterComponent,
+    AccountSettingsComponent,
   ],
   imports: [
     SharedModule,
     CoreModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    ServiceModule
   ],
   exports: [
     DashboardComponent,

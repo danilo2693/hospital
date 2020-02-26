@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IncrementadorComponent } from './incrementador/incrementador.component';
 import { GraficaDonaComponent } from './grafica-dona/grafica-dona.component';
 import { ChartsModule } from 'ng2-charts';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [IncrementadorComponent, GraficaDonaComponent],
@@ -15,7 +16,9 @@ import { ChartsModule } from 'ng2-charts';
   exports: [
     FormsModule,
     IncrementadorComponent,
-    GraficaDonaComponent
+    GraficaDonaComponent,
+    CommonModule,
+    TranslateModule
   ]
 })
 export class SharedModule { }

@@ -25,7 +25,6 @@ export class GraficaDonaComponent implements OnInit {
     event: MouseEvent;
     active: {}[];
   }): void {
-    console.log(event, active);
   }
 
   public chartHovered({
@@ -35,7 +34,6 @@ export class GraficaDonaComponent implements OnInit {
     event: MouseEvent;
     active: {}[];
   }): void {
-    console.log(event, active);
   }
 
 }

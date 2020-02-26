@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SettingsService } from './shared/services/service.index';
+import { LanguageService } from './shared/services/service.index';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'hospital';
+  constructor(public settingsService: SettingsService, public languageService: LanguageService) { }
 }
