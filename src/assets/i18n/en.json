@@ -5,5 +5,7 @@
   "Main": "Main Menu",
   "Dashboard": "Dashboard",
   "ProgressBar": "ProgressBar",
-  "Graphics": "Graphics"
+  "Graphics": "Graphics",
+  "Promises": "Promises",
+  "Settings": "Settings"
 }

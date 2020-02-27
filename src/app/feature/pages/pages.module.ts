@@ -12,6 +12,8 @@ import { RegisterComponent } from './login/register.component';
 import { ChartsModule } from 'ng2-charts';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { ServiceModule } from '../../shared/services/service.module';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ServiceModule } from '../../shared/services/service.module';
     LoginComponent,
     RegisterComponent,
     AccountSettingsComponent,
+    PromesasComponent,
+    RxjsComponent,
   ],
   imports: [
     SharedModule,

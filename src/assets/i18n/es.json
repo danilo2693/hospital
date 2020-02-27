@@ -5,5 +5,7 @@
   "Main": "Menú Principal",
   "Dashboard": "Dashboard",
   "ProgressBar": "Barra de progreso",
-  "Graphics": "Gráficas"
+  "Graphics": "Gráficas",
+  "Promises": "Promesas",
+  "Settings": "Ajustes"
 }
