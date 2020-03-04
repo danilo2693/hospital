@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SidebarService } from 'src/app/shared/services/service.index';
+import { UsuarioService } from 'src/app/feature/pages/login/shared/services/usuario.service';
+import { SidebarService } from './shared/services/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,10 +9,13 @@ import { SidebarService } from 'src/app/shared/services/service.index';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(public sidebarService: SidebarService) { }
+  constructor(public sidebarService: SidebarService, private usuarioService: UsuarioService) { }
 
   ngOnInit() {
 
   }
 
+  cerrarSesion() {
+    this.usuarioService.cerrarSesion();
+  }
 }

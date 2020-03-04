@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SettingsService } from './shared/services/service.index';
-import { LanguageService } from './shared/services/service.index';
+import { SettingsService } from './feature/pages/account-settings/shared/services/settings.service';
+import { LanguageService } from './core/services/language.service';
 
 @Component({
   selector: 'app-root',

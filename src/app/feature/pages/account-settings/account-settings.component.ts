@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsService } from 'src/app/shared/services/service.index';
+import { SettingsService } from './shared/services/settings.service';
 
 @Component({
   selector: 'app-account-settings',

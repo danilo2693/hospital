@@ -9,9 +9,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CoreModule } from 'src/app/core/core.module';
 import { RegisterComponent } from './login/register.component';
-import { ChartsModule } from 'ng2-charts';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
-import { ServiceModule } from '../../shared/services/service.module';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 
@@ -30,8 +28,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
   imports: [
     SharedModule,
     CoreModule,
-    PagesRoutingModule,
-    ServiceModule
+    PagesRoutingModule
   ],
   exports: [
     DashboardComponent,

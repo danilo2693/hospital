@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { APP_ROUTES } from './app-routing.module';
-import { SettingsService } from './shared/services/settings/settings.service';
+import { SettingsService } from './feature/pages/account-settings/shared/services/settings.service';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';

@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IncrementadorComponent } from './incrementador/incrementador.component';
 import { GraficaDonaComponent } from './grafica-dona/grafica-dona.component';
 import { ChartsModule } from 'ng2-charts';
 import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [IncrementadorComponent, GraficaDonaComponent],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     ChartsModule,
   ],
   exports: [
@@ -18,7 +21,9 @@ import { TranslateModule } from '@ngx-translate/core';
     IncrementadorComponent,
     GraficaDonaComponent,
     CommonModule,
-    TranslateModule
+    TranslateModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
