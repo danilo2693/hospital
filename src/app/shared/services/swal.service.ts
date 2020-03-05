@@ -7,7 +7,11 @@ import Swal, { SweetAlertIcon } from 'sweetalert2';
 export class SwalService {
   constructor() {}
 
-  toast(icon = 'success' as SweetAlertIcon, title: string) {
+  alert(title, text, icon = 'success') {
+    Swal.fire(title, text, icon as SweetAlertIcon);
+  }
+
+  toast(title: string, icon = 'success' ) {
     Swal.mixin({
       toast: true,
       position: 'top-start',
@@ -19,7 +23,7 @@ export class SwalService {
         toast.addEventListener('mouseleave', Swal.resumeTimer);
       }
     }).fire({
-      icon,
+      icon: icon as SweetAlertIcon,
       title
     });
   }
@@ -27,7 +31,7 @@ export class SwalService {
   confirm(
     title = '',
     text = '',
-    icon = 'warning' as SweetAlertIcon,
+    icon = 'warning' ,
     confirmButtonText = '',
     cancelButtonText = '',
     titleSuccess = '',
@@ -36,7 +40,7 @@ export class SwalService {
     Swal.fire({
       title,
       text,
-      icon,
+      icon: icon as SweetAlertIcon,
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',

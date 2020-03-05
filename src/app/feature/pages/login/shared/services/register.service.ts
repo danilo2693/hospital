@@ -1,22 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import Swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
 import { UsuarioService } from './usuario.service';
 import { Usuario } from '../models/usuario.model';
 import { Router } from '@angular/router';
-
-const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-start',
-  showConfirmButton: false,
-  timer: 3000,
-  timerProgressBar: true,
-  onOpen: (toast) => {
-    toast.addEventListener('mouseenter', Swal.stopTimer);
-    toast.addEventListener('mouseleave', Swal.resumeTimer);
-  }
-});
+import { SwalService } from 'src/app/shared/services/swal.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +13,9 @@ export class RegisterService {
   constructor(
     private translateService: TranslateService,
     private usuarioService: UsuarioService,
-    private router: Router) {}
+    private router: Router,
+    private swalService: SwalService
+  ) {}
 
   inicializarFormularioRegistro() {
     return new FormGroup(
@@ -60,17 +50,13 @@ export class RegisterService {
     }
     if (formulario.value.condiciones) {
       const usuario = new Usuario(formulario.value.nombre, formulario.value.email, formulario.value.password);
-      this.usuarioService.crearUsuario(usuario)
-        .subscribe(respuesta => {
-          formulario.reset();
-          Toast.fire({
-            icon: 'success',
-            title: this.translateService.instant('SuccessCreateUser')
-          });
-          this.router.navigate(['/login']);
-        });
+      this.usuarioService.crearUsuario(usuario).subscribe(respuesta => {
+        formulario.reset();
+        this.swalService.toast(this.translateService.instant('SuccessCreateUser'));
+        this.router.navigate(['/login']);
+      });
     } else {
-      Swal.fire(
+      this.swalService.alert(
         this.translateService.instant('Important'),
         this.translateService.instant('MustAcceptConditions'),
         'warning'

@@ -14,7 +14,6 @@ export class BreadcrumbsComponent implements OnInit {
   constructor(private router: Router, private titleService: Title, private meta: Meta) {
     this.getDataRoute()
     .subscribe( data => {
-      window.console.log(data);
       this.titulo = data.title;
       this.titleService.setTitle(`${this.nombreApp} > ${this.titulo}` );
       this.updateMetaTag();

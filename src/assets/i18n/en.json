@@ -34,5 +34,13 @@
   "SuccessCreateUser": "Success create user",
   "LoginWithFacebook": "Log in With Facebook",
   "LoginWithGoogle": "Log in With Google",
-  "Logout": "Logout"
+  "Logout": "Logout",
+  "NotInternetConnection": "Not Internet Connection",
+  "UnexpectedError": "Unexpected error",
+  "ErrorCredentials": "Error Credentials",
+  "ChangeLanguage": "Change language",
+  "English": "English",
+  "Spanish": "Spanish",
+  "AccountSettings": "Account settings",
+  "Home": "Home"
 }

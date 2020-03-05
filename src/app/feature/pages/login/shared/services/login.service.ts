@@ -49,7 +49,7 @@ export class LoginService {
 
   bienvenidoYRedireccionDashboard(nombreUsuario: string) {
     const bienvenidoTraducido = this.translateService.instant('Welcome');
-    this.swalService.toast('success', `${bienvenidoTraducido} ${nombreUsuario}`);
+    this.swalService.toast(`${bienvenidoTraducido} ${nombreUsuario}`);
     this.zone.run(() => {
       this.router.navigate(['/dashboard']);
     });

@@ -67,7 +67,6 @@ export class UsuarioService {
   crearUsuario(usuario: Usuario) {
     return this.peticionesService.post(apiUsuario, usuario).pipe(
       map((respuesta: any) => {
-        console.log(respuesta);
         return respuesta.usuario;
       })
     );

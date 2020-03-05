@@ -34,5 +34,13 @@
   "SuccessCreateUser": "Usuario creado correctamente",
   "LoginWithFacebook": "Iniciar sesión con Facebook",
   "LoginWithGoogle": "Iniciar sesión con Google",
-  "Logout": "Cerrar sesión"
+  "Logout": "Cerrar sesión",
+  "NotInternetConnection": "No hay conexión a internet",
+  "UnexpectedError": "Error inesperado",
+  "ErrorCredentials": "Credenciales incorrectas",
+  "ChangeLanguage": "Cambiar idioma",
+  "English": "Ingles",
+  "Spanish": "Español",
+  "AccountSettings": "Configuraciones",
+  "Home": "Inicio"
 }
