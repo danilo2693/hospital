@@ -42,5 +42,14 @@
   "English": "Ingles",
   "Spanish": "Español",
   "AccountSettings": "Configuraciones",
-  "Home": "Inicio"
+  "Home": "Inicio",
+  "Profile": "Perfil",
+  "MyProfile": "Mi Perfil",
+  "ViewProfile": "Ver perfil",
+  "Save": "Guardar",
+  "UpdatePhoto": "Actualizar foto",
+  "ChoosePhoto": "Elige una nueva foto",
+  "DataUpdateSuccess": "Datos actualizados correctamente",
+  "PhotoUpdateSuccess": "Foto actualizada correctamente",
+  "OnlyImages": "El archivo no es una imágen"
 }

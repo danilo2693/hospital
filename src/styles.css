@@ -5,3 +5,16 @@
 .pointer {
   cursor: pointer;
 }
+
+.pointer-not-allowed {
+  cursor: not-allowed;
+}
+
+.w150 {
+  width: 150px;
+}
+
+.btn-imagen {
+  display: block;
+  margin: 10px 0 10px 0;
+}

@@ -6,16 +6,11 @@ import { GraficaDonaComponent } from './grafica-dona/grafica-dona.component';
 import { ChartsModule } from 'ng2-charts';
 import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule } from '@angular/common/http';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [IncrementadorComponent, GraficaDonaComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ChartsModule,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, ChartsModule, PipesModule],
   exports: [
     FormsModule,
     IncrementadorComponent,
@@ -23,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     TranslateModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {}

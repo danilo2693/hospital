@@ -42,5 +42,14 @@
   "English": "English",
   "Spanish": "Spanish",
   "AccountSettings": "Account settings",
-  "Home": "Home"
+  "Home": "Home",
+  "Profile": "Profile",
+  "MyProfile": "My profile",
+  "ViewProfile": "View Profile",
+  "Save": "Save",
+  "UpdatePhoto": "Update photo",
+  "ChoosePhoto": "Choose a new photo",
+  "DataUpdateSuccess": "Data updated successfully",
+  "PhotoUpdateSuccess": "Photo update success",
+  "OnlyImages": "Only images files"
 }

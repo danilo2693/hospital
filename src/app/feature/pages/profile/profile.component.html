@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-subtitle">{{usuario.nombre}}</h6>
+        <form ngNativeValidate [formGroup]="formulario" (ngSubmit)="actualizarPerfil()" class="form p-t-20">
+          <div class="form-group">
+            <label for="exampleInputuname">{{'Name' | translate}}</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+              <input formControlName="nombre" name="nombre" type="text" class="form-control" placeholder="{{'Name' | translate}}" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">{{'Email' | translate}}</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-email"></i></div>
+              <input formControlName="email" name="email" type="email" class="form-control" placeholder="{{'Email' | translate}}" required>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+            <i class="fa fa-save"></i> {{'Save' | translate}}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-body" align="center">
+        <h6 class="card-subtitle">{{'ChoosePhoto' | translate}}</h6>
+        <form [formGroup]="formularioImagen" (ngSubmit)="subirImagen()" class="form p-t-20">
+          <img *ngIf="!imagenTemporal" [src]="usuarioService.usuario.img | imagen" class="w150" />
+          <img *ngIf="imagenTemporal" [src]="imagenTemporal" class="w150" />
+          <input class="btn-imagen" formControlName="imagen" type="file" accept="image/*" (change)="cargarImagen($event)" />
+          <button [disabled]="sinImagenSeleccionada" [ngClass]="{'pointer-not-allowed': sinImagenSeleccionada}" type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+            <i class="fa fa-save"></i> {{'UpdatePhoto' | translate}}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

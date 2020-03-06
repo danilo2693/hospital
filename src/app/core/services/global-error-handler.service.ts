@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { HTTP_ERRORES_CODIGO } from 'src/app/shared/config/httpErroresCodigo';
 import { SwalService } from '../../shared/services/swal.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Icon } from 'src/app/shared/enums/icon.enum';
 
 @Injectable()
 export class GlobalErrorHandlerService implements ErrorHandler {
@@ -22,12 +23,12 @@ export class GlobalErrorHandlerService implements ErrorHandler {
     this.imprimirErrorConsola(mensaje);
     try {
       if (typeof mensaje === 'string') {
-        this.swalService.alert('Error', mensaje, 'error');
+        this.swalService.alert('Error', mensaje, Icon.ERROR);
       } else if (mensaje.hasOwnProperty('error')) {
         this.swalService.alert(
           'Error',
           mensaje.error ? this.translateService.instant(mensaje.error.mensaje) : '',
-          'error'
+          Icon.ERROR
         );
       }
     } catch (error) {}

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
+import { Icon } from '../enums/icon.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -7,11 +8,11 @@ import Swal, { SweetAlertIcon } from 'sweetalert2';
 export class SwalService {
   constructor() {}
 
-  alert(title, text, icon = 'success') {
+  alert(title, text, icon = Icon.SUCCESS) {
     Swal.fire(title, text, icon as SweetAlertIcon);
   }
 
-  toast(title: string, icon = 'success' ) {
+  toast(title: string, icon = Icon.SUCCESS ) {
     Swal.mixin({
       toast: true,
       position: 'top-start',
@@ -48,7 +49,7 @@ export class SwalService {
       cancelButtonText
     }).then(result => {
       if (result.value) {
-        Swal.fire(titleSuccess, textSuccess, 'success');
+        Swal.fire(titleSuccess, textSuccess, Icon.SUCCESS);
       }
     });
   }

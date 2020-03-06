@@ -50,7 +50,7 @@ export class RegisterService {
     }
     if (formulario.value.condiciones) {
       const usuario = new Usuario(formulario.value.nombre, formulario.value.email, formulario.value.password);
-      this.usuarioService.crearUsuario(usuario).subscribe(respuesta => {
+      this.usuarioService.crearUsuario(usuario).subscribe(() => {
         formulario.reset();
         this.swalService.toast(this.translateService.instant('SuccessCreateUser'));
         this.router.navigate(['/login']);

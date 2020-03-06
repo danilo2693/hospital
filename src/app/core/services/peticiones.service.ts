@@ -59,19 +59,19 @@ export class PeticionesService {
       .pipe(map(response => response as T));
   }
 
-  post<T, R>(serviceUrl: string, body: T, opts?: Options): Observable<R> {
+  post<T, R>(serviceUrl: string, body: T, opts?: Options, witFormData?: any): Observable<R> {
     const ropts = this.createOptions(opts);
 
     return this.http
-      .post(serviceUrl, body, ropts)
+      .post(serviceUrl, body, witFormData ? undefined : ropts)
       .pipe(map(response => response as R));
   }
 
-  put<T, R>(serviceUrl: string, body: T, opts?: Options): Observable<R> {
+  put<T, R>(serviceUrl: string, body: T, opts?: Options, witFormData?: any): Observable<R> {
     const ropts = this.createOptions(opts);
 
     return this.http
-      .put(serviceUrl, body, ropts)
+      .put(serviceUrl, body, witFormData ? undefined : ropts)
       .pipe(map(response => response as R));
   }
 
