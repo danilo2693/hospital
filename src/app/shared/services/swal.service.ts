@@ -1,21 +1,35 @@
-import { Injectable } from '@angular/core';
-import Swal, { SweetAlertIcon } from 'sweetalert2';
+import { Injectable, EventEmitter } from '@angular/core';
+import Swal, { SweetAlertIcon, SweetAlertPosition } from 'sweetalert2';
 import { Icon } from '../enums/icon.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SwalService {
-  constructor() {}
+  clickConfirm: EventEmitter<void>;
+  clickCancel: EventEmitter<void>;
+  subGuardar;
+  subNoGuardar;
+
+  constructor() {
+    this.iniciarObservables();
+  }
+
+  iniciarObservables() {
+    this.clickConfirm = new EventEmitter();
+    this.clickCancel = new EventEmitter();
+  }
 
   alert(title, text, icon = Icon.SUCCESS) {
+    this.iniciarObservables();
     Swal.fire(title, text, icon as SweetAlertIcon);
   }
 
-  toast(title: string, icon = Icon.SUCCESS ) {
+  toast(title: string, icon = Icon.SUCCESS, position = 'top-start') {
+    this.iniciarObservables();
     Swal.mixin({
       toast: true,
-      position: 'top-start',
+      position: position as SweetAlertPosition,
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true,
@@ -32,13 +46,13 @@ export class SwalService {
   confirm(
     title = '',
     text = '',
-    icon = 'warning' ,
+    icon = 'warning',
     confirmButtonText = '',
     cancelButtonText = '',
-    titleSuccess = '',
-    textSuccess = ''
+    { clickConfirm = () => {}, clickCancel = () => {} } = {}
   ) {
-    Swal.fire({
+    this.iniciarObservables();
+    return Swal.fire({
       title,
       text,
       icon: icon as SweetAlertIcon,
@@ -49,7 +63,13 @@ export class SwalService {
       cancelButtonText
     }).then(result => {
       if (result.value) {
-        Swal.fire(titleSuccess, textSuccess, Icon.SUCCESS);
+        this.clickConfirm.subscribe(() => clickConfirm());
+        this.clickConfirm.emit();
+        this.clickConfirm.unsubscribe();
+      } else {
+        this.clickCancel.subscribe(() => clickCancel());
+        this.clickCancel.emit();
+        this.clickCancel.unsubscribe();
       }
     });
   }

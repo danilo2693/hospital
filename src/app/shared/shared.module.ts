@@ -7,10 +7,11 @@ import { ChartsModule } from 'ng2-charts';
 import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule } from '@angular/common/http';
 import { PipesModule } from './pipes/pipes.module';
+import { ModalUploadImageComponent } from './modal-upload-image/modal-upload-image.component';
 
 @NgModule({
-  declarations: [IncrementadorComponent, GraficaDonaComponent],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, ChartsModule, PipesModule],
+  declarations: [IncrementadorComponent, GraficaDonaComponent, ModalUploadImageComponent],
+  imports: [CommonModule, FormsModule, TranslateModule, ReactiveFormsModule, HttpClientModule, ChartsModule, PipesModule],
   exports: [
     FormsModule,
     IncrementadorComponent,
@@ -19,7 +20,8 @@ import { PipesModule } from './pipes/pipes.module';
     TranslateModule,
     HttpClientModule,
     ReactiveFormsModule,
-    PipesModule
+    PipesModule,
+    ModalUploadImageComponent
   ]
 })
 export class SharedModule {}

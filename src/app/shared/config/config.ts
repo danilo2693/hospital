@@ -6,4 +6,5 @@ export const apiLoginGoogle = `${urlPrincipal}/login/google`;
 export const apiUsuario = `${urlPrincipal}/usuario`;
 export const apiImagen = `${urlPrincipal}/imagen`;
 export const apiUpload = `${urlPrincipal}/upload`;
-
+export const apiBusquedaTodo = `${urlPrincipal}/todo`;
+export const apiBusquedaColeccion = `${urlPrincipal}/busqueda/coleccion`;

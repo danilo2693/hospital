@@ -1,0 +1,42 @@
+<div [ngClass]="{'fondo-negro': uploadImageService.mostrar, 'ocultar': !uploadImageService.mostrar}"
+  class="animated fadeIn">
+  <div class="modal" tabindex="-1" style="display: block" role="dialog">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{'ChangePhoto' | translate}}</h5>
+          <button (click)="uploadImageService.ocultarModal()" type="button" class="close pointer" data-dismiss="modal"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body" align="center">
+              <h6 class="card-subtitle">{{'ChoosePhoto' | translate}}</h6>
+              <form [formGroup]="uploadImageService.formularioImagen" (ngSubmit)="uploadImageService.subirImagen()"
+                class="form p-t-20">
+                <img *ngIf="!uploadImageService.imagenTemporal" [src]="uploadImageService.urlImagenActual | imagen"
+                  class="w150" />
+                <img *ngIf="uploadImageService.imagenTemporal" [src]="uploadImageService.imagenTemporal" class="w150" />
+                <label class="btn btn-info custom-input-btn btn-imagen">
+                  <input name="file" formControlName="imagen" type="file" accept="image/*"
+                    (change)="uploadImageService.cargarImagen($event)" id="file" class="ocultar">
+                  <i class="fa fa-cloud-upload"></i> {{'ChooseFile' | translate}}
+                </label>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button (click)="uploadImageService.ocultarModal()" type="button" class="btn btn-secondary"
+            data-dismiss="modal">{{'Close' | translate}}</button>
+          <button (click)="uploadImageService.subirImagen()" [disabled]="uploadImageService.sinImagenSeleccionada"
+            [ngClass]="{'pointer-not-allowed': uploadImageService.sinImagenSeleccionada}" type="submit"
+            class="btn btn-success waves-effect waves-light m-r-10">
+            <i class="fa fa-save"></i> {{'UpdatePhoto' | translate}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

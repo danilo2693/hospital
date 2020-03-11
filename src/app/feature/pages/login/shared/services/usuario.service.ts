@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../models/usuario.model';
-import { apiUsuario, apiLogin, apiLoginGoogle, apiUpload } from 'src/app/shared/config/config';
+import { apiUsuario, apiLogin, apiLoginGoogle, apiUpload, apiBusquedaColeccion } from 'src/app/shared/config/config';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { PeticionesService } from 'src/app/core/services/peticiones.service';
 import { isNullOrUndefined } from 'util';
 import { SwalService } from '../../../../../shared/services/swal.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Tabla } from 'src/app/shared/enums/tablas.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -81,33 +82,58 @@ export class UsuarioService {
     );
   }
 
+  obtenerUsuarios(desde = 0) {
+    return this.peticionesService.get(`${apiUsuario}?desde=${desde}`);
+  }
+
+  buscarUsuarios(tabla: string, palabra) {
+    if (tabla.includes(Tabla.USUARIO) || tabla.includes(Tabla.HOSPITAL) || tabla.includes(Tabla.MEDICO)) {
+      return this.peticionesService.get(`${apiBusquedaColeccion}/${tabla}/${palabra}`);
+    } else {
+      return;
+    }
+  }
+
+  eliminarUsuario(id: string) {
+    return this.peticionesService.delete(`${apiUsuario}/${id}?token=${this.token}`);
+  }
+
   actualizarUsuario(usuario: Usuario) {
-    return this.peticionesService.put(`${apiUsuario}/${this.usuario._id}?token=${this.token}`, usuario).pipe(
+    return this.peticionesService.put(`${apiUsuario}/${usuario._id}?token=${this.token}`, usuario).pipe(
       map((respuesta: any) => {
-        this.usuario = respuesta.usuario;
-        this.guardarStorage(respuesta.usuario._id, this.token, respuesta.usuario);
-        if (localStorage.getItem('email')) {
-          localStorage.setItem('email', respuesta.usuario.email);
+        if (usuario._id === this.usuario._id) {
+          this.usuario = respuesta.usuario;
+          this.guardarStorage(respuesta.usuario._id, this.token, respuesta.usuario);
+          if (localStorage.getItem('email')) {
+            localStorage.setItem('email', respuesta.usuario.email);
+          }
         }
         return respuesta.usuario;
       })
     );
   }
 
-  actualizarImagen(archivo) {
+  actualizarImagen(archivo, tabla?: string, id?: string) {
     let peticion;
     if (!isNullOrUndefined(archivo)) {
       const formData = new FormData();
       formData.append('imagen', archivo, archivo.name);
-      peticion = this.peticionesService.put(`${apiUpload}/usuario/${this.usuario._id}`, formData, undefined, true).pipe(
+      peticion = this.peticionesService.put(`${apiUpload}/${tabla}/${id}`, formData, undefined, true).pipe(
         map((respuesta: any) => {
-          this.usuario = respuesta.usuario;
           this.swalService.toast(this.translateService.instant('PhotoUpdateSuccess'));
-          this.guardarStorage(respuesta.usuario._id, this.token, respuesta.usuario);
+          if (id === this.usuario._id) {
+            this.usuario = respuesta.usuario;
+            this.guardarStorage(respuesta.usuario._id, this.token, respuesta.usuario);
+          }
           return respuesta;
         })
       );
     }
     return peticion;
   }
+
+  obtenerRoles() {
+    return this.peticionesService.get('assets/data/roles.json');
+  }
+
 }

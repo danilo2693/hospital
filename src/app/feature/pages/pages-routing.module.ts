@@ -13,6 +13,7 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuardGuard } from 'src/app/core/guard/login-guard.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const routes: Routes = [
   { path: '',
@@ -26,6 +27,9 @@ const routes: Routes = [
       { path: 'rxjs', component: RxjsComponent, data: { title: 'Rxjs'}},
       { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Settings'}},
       { path: 'profile', component: ProfileComponent, data: { title: 'Profile'}},
+      { path: 'users', component: UsuariosComponent, data: { title: 'Users'}},
+      { path: 'hospitals', component: ProfileComponent, data: { title: 'Hospitals'}},
+      { path: 'doctors', component: ProfileComponent, data: { title: 'Doctors'}},
       { path: '', pathMatch: 'full', redirectTo: '/dashboard' }
     ]
   },

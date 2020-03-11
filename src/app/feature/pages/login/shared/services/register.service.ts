@@ -5,6 +5,7 @@ import { UsuarioService } from './usuario.service';
 import { Usuario } from '../models/usuario.model';
 import { Router } from '@angular/router';
 import { SwalService } from 'src/app/shared/services/swal.service';
+import { Icon } from 'src/app/shared/enums/icon.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -59,7 +60,7 @@ export class RegisterService {
       this.swalService.alert(
         this.translateService.instant('Important'),
         this.translateService.instant('MustAcceptConditions'),
-        'warning'
+        Icon.WARNING
       );
     }
   }
