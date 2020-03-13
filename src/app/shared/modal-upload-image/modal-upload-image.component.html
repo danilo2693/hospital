@@ -16,7 +16,7 @@
               <h6 class="card-subtitle">{{'ChoosePhoto' | translate}}</h6>
               <form [formGroup]="uploadImageService.formularioImagen" (ngSubmit)="uploadImageService.subirImagen()"
                 class="form p-t-20">
-                <img *ngIf="!uploadImageService.imagenTemporal" [src]="uploadImageService.urlImagenActual | imagen"
+                <img *ngIf="!uploadImageService.imagenTemporal" [src]="uploadImageService.urlImagenActual | imagen: uploadImageService.tabla"
                   class="w150" />
                 <img *ngIf="uploadImageService.imagenTemporal" [src]="uploadImageService.imagenTemporal" class="w150" />
                 <label class="btn btn-info custom-input-btn btn-imagen">

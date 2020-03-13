@@ -2,8 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input, ViewChild, ElementRef }
 
 @Component({
   selector: 'app-incrementador',
-  templateUrl: './incrementador.component.html',
-  styleUrls: ['./incrementador.component.css']
+  templateUrl: './incrementador.component.html'
 })
 
 export class IncrementadorComponent implements OnInit {

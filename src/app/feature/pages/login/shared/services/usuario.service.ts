@@ -86,7 +86,7 @@ export class UsuarioService {
     return this.peticionesService.get(`${apiUsuario}?desde=${desde}`);
   }
 
-  buscarUsuarios(tabla: string, palabra) {
+  buscarColeccion(tabla: string, palabra) {
     if (tabla.includes(Tabla.USUARIO) || tabla.includes(Tabla.HOSPITAL) || tabla.includes(Tabla.MEDICO)) {
       return this.peticionesService.get(`${apiBusquedaColeccion}/${tabla}/${palabra}`);
     } else {

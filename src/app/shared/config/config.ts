@@ -8,3 +8,5 @@ export const apiImagen = `${urlPrincipal}/imagen`;
 export const apiUpload = `${urlPrincipal}/upload`;
 export const apiBusquedaTodo = `${urlPrincipal}/todo`;
 export const apiBusquedaColeccion = `${urlPrincipal}/busqueda/coleccion`;
+export const apiHospital = `${urlPrincipal}/hospital`;
+export const apiMedico = `${urlPrincipal}/medico`;

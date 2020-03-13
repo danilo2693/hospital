@@ -41,7 +41,7 @@ export class UploadImageService {
     this.mostrar = false;
   }
 
-  inicializarVariables(urlImagenActual, tabla, id) {
+  inicializarVariables(urlImagenActual: string, tabla: string, id: string) {
     this.urlImagenActual = urlImagenActual;
     this.tabla = tabla;
     this.id = id;

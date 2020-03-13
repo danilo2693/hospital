@@ -24,10 +24,11 @@ export class ProfileComponent implements OnInit {
     this.usuario = this.usuarioService.usuario;
     this.formulario = this.profileService.inicializarFormularioProfile(this.usuario);
     this.formularioImagen = this.profileService.inicializarFormularioImagen();
-    this.uploadImageService.inicializarVariables('', 'usuario', this.usuarioService.usuario._id);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.uploadImageService.inicializarVariables('', 'usuario', this.usuarioService.usuario._id);
+  }
 
   actualizarPerfil() {
     this.profileService.actualizarPerfil(this.formulario);

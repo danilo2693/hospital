@@ -14,28 +14,33 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuardGuard } from 'src/app/core/guard/login-guard.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
+import { MedicosComponent } from './medicos/medicos.component';
+import { MedicoComponent } from './medicos/medico.component';
 
 const routes: Routes = [
-  { path: '',
+  {
+    path: '',
     component: PagesComponent,
     canActivate: [LoginGuardGuard],
     children: [
-      { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard'}},
-      { path: 'progress', component: ProgressComponent, data: { title: 'ProgressBar' }},
-      { path: 'graficas1', component: Graficas1Component, data: { title: 'Graphics'}},
-      { path: 'promesas', component: PromesasComponent, data: { title: 'Promises'}},
-      { path: 'rxjs', component: RxjsComponent, data: { title: 'Rxjs'}},
-      { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Settings'}},
-      { path: 'profile', component: ProfileComponent, data: { title: 'Profile'}},
-      { path: 'users', component: UsuariosComponent, data: { title: 'Users'}},
-      { path: 'hospitals', component: ProfileComponent, data: { title: 'Hospitals'}},
-      { path: 'doctors', component: ProfileComponent, data: { title: 'Doctors'}},
+      { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
+      { path: 'progress', component: ProgressComponent, data: { title: 'ProgressBar' } },
+      { path: 'graficas1', component: Graficas1Component, data: { title: 'Graphics' } },
+      { path: 'promesas', component: PromesasComponent, data: { title: 'Promises' } },
+      { path: 'rxjs', component: RxjsComponent, data: { title: 'Rxjs' } },
+      { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Settings' } },
+      { path: 'profile', component: ProfileComponent, data: { title: 'Profile' } },
+      { path: 'users', component: UsuariosComponent, data: { title: 'Users' } },
+      { path: 'hospitals', component: HospitalesComponent, data: { title: 'Hospitals' } },
+      { path: 'doctors', component: MedicosComponent, data: { title: 'Doctors' } },
+      { path: 'doctor/:id', component: MedicoComponent, data: { title: 'Doctor' } },
       { path: '', pathMatch: 'full', redirectTo: '/dashboard' }
     ]
   },
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
-  { path: '**', component: NopagefoundComponent}
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: '**', component: NopagefoundComponent }
 ];
 
 @NgModule({

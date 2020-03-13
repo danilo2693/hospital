@@ -8,9 +8,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule } from '@angular/common/http';
 import { PipesModule } from './pipes/pipes.module';
 import { ModalUploadImageComponent } from './modal-upload-image/modal-upload-image.component';
+import { BuscarColeccionComponent } from './buscar-coleccion/buscar-coleccion.component';
 
 @NgModule({
-  declarations: [IncrementadorComponent, GraficaDonaComponent, ModalUploadImageComponent],
+  declarations: [IncrementadorComponent, GraficaDonaComponent, ModalUploadImageComponent, BuscarColeccionComponent],
   imports: [CommonModule, FormsModule, TranslateModule, ReactiveFormsModule, HttpClientModule, ChartsModule, PipesModule],
   exports: [
     FormsModule,
@@ -21,7 +22,8 @@ import { ModalUploadImageComponent } from './modal-upload-image/modal-upload-ima
     HttpClientModule,
     ReactiveFormsModule,
     PipesModule,
-    ModalUploadImageComponent
+    ModalUploadImageComponent,
+    BuscarColeccionComponent
   ]
 })
 export class SharedModule {}

@@ -42,7 +42,7 @@
             </thead>
             <tbody class="td-vertical-align" formArrayName="usuarios">
               <tr
-                *ngFor="let usuario of usuariosFormularioService.usuarioFormularioValue; let i=index;let l=last;trackBy: trackByFn"
+                *ngFor="let usuario of usuariosFormularioService.usuarioFormularioValue; let i=index;let l=last;trackBy: '_id' | trackBy"
                 [formGroupName]="i">
                 <td>
                   <img class="img-w50 img-circle pointer" [src]="usuario.img | imagen"  data-toggle="tooltip"
@@ -64,7 +64,7 @@
                 </td>
                 <td style="text-align: center;" class="opciones-m2">
                   <button (click)="guardarUsuario(usuario)" class="btn btn-primary">
-                    <i class="fa fa-save"></i>
+                    <i class="fa fa-edit"></i>
                   </button>
                   <button (click)="confirmarBorrarUsuario(usuario._id, usuario.nombre)" class="btn btn-danger">
                     <i class="fa fa-trash-o"></i>

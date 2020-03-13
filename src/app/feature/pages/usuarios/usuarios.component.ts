@@ -59,7 +59,7 @@ export class UsuariosComponent implements OnInit {
 
   buscarUsuarios(palabra: string) {
     if (palabra.length > 0) {
-      this.usuarioService.buscarUsuarios(Tabla.USUARIO, palabra).subscribe((respuesta: any) => {
+      this.usuarioService.buscarColeccion(Tabla.USUARIO, palabra).subscribe((respuesta: any) => {
         this.actualizarUsuarios(respuesta);
       });
     } else {

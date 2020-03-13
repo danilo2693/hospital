@@ -12,21 +12,19 @@ export class SwalService {
   subNoGuardar;
 
   constructor() {
-    this.iniciarObservables();
+    this.iniciarObservablesConfirm();
   }
 
-  iniciarObservables() {
+  iniciarObservablesConfirm() {
     this.clickConfirm = new EventEmitter();
     this.clickCancel = new EventEmitter();
   }
 
   alert(title, text, icon = Icon.SUCCESS) {
-    this.iniciarObservables();
     Swal.fire(title, text, icon as SweetAlertIcon);
   }
 
   toast(title: string, icon = Icon.SUCCESS, position = 'top-start') {
-    this.iniciarObservables();
     Swal.mixin({
       toast: true,
       position: position as SweetAlertPosition,
@@ -43,6 +41,33 @@ export class SwalService {
     });
   }
 
+  inputText(
+    title = '',
+    text = '',
+    icon = 'warning',
+    confirmButtonText = '',
+    cancelButtonText = '',
+    errorEmptyInput = ''
+  ) {
+    return Swal.fire({
+      title,
+      text,
+      input: 'text',
+      icon: icon as SweetAlertIcon,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText,
+      cancelButtonText,
+      inputValue: '',
+      showCancelButton: true,
+      inputValidator: value => {
+        if (!value) {
+          return errorEmptyInput;
+        }
+      }
+    });
+  }
+
   confirm(
     title = '',
     text = '',
@@ -51,7 +76,7 @@ export class SwalService {
     cancelButtonText = '',
     { clickConfirm = () => {}, clickCancel = () => {} } = {}
   ) {
-    this.iniciarObservables();
+    this.iniciarObservablesConfirm();
     return Swal.fire({
       title,
       text,

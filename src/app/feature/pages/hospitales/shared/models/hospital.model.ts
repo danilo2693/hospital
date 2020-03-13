@@ -1,4 +1,4 @@
-import { Usuario } from './usuario.model';
+import { Usuario } from '../../../login/shared/models/usuario.model';
 
 export class Hospital {
   constructor(

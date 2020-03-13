@@ -1,0 +1,14 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="input-group">
+          <input #input (keyup)="buscar(input.value)" type="text" class="form-control"
+            placeholder="{{defaultPlaceholder | translate}}">
+          <div (click)="limpiar(input)" class="input-group-addon pointer" data-toggle="tooltip"
+            title="{{'Clear' | translate}}"><i class="ti-close"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
