@@ -10,7 +10,9 @@ import { SidebarService } from './shared/services/sidebar.service';
 export class SidebarComponent implements OnInit {
   constructor(public sidebarService: SidebarService, public usuarioService: UsuarioService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.sidebarService.cargarMenu();
+  }
 
   cerrarSesion() {
     this.usuarioService.cerrarSesion();

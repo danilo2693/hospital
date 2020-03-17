@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { LoginService } from './shared/services/login.service';
+import { ErroresService } from '../../../shared/services/errores.service';
 
 declare function init_plugins();
 declare const gapi: any;
@@ -10,11 +11,10 @@ declare const gapi: any;
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   formulario: FormGroup;
   auth2: any;
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, public erroresService: ErroresService) {}
 
   ngOnInit() {
     init_plugins();

@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RegisterService } from './shared/services/register.service';
 import { TranslateService } from '@ngx-translate/core';
 import { UsuarioService } from './shared/services/usuario.service';
+import { ErroresService } from 'src/app/shared/services/errores.service';
 
 declare function init_plugins();
 @Component({
@@ -15,7 +16,8 @@ export class RegisterComponent implements OnInit {
   formulario: FormGroup;
 
   constructor(
-    private registerService: RegisterService
+    private registerService: RegisterService,
+    public erroresService: ErroresService
   ) { }
 
   ngOnInit() {

@@ -17,6 +17,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
 import { MedicosComponent } from './medicos/medicos.component';
 import { MedicoComponent } from './medicos/medico.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
+import { AdminGuard } from '../../core/guard/admin.guard';
 
 const routes: Routes = [
   {
@@ -31,7 +33,8 @@ const routes: Routes = [
       { path: 'rxjs', component: RxjsComponent, data: { title: 'Rxjs' } },
       { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Settings' } },
       { path: 'profile', component: ProfileComponent, data: { title: 'Profile' } },
-      { path: 'users', component: UsuariosComponent, data: { title: 'Users' } },
+      { path: 'search/:term', component: BusquedaComponent, data: { title: 'Search' } },
+      { path: 'users', component: UsuariosComponent, canActivate: [AdminGuard], data: { title: 'Users' } },
       { path: 'hospitals', component: HospitalesComponent, data: { title: 'Hospitals' } },
       { path: 'doctors', component: MedicosComponent, data: { title: 'Doctors' } },
       { path: 'doctor/:id', component: MedicoComponent, data: { title: 'Doctor' } },

@@ -2,17 +2,31 @@
   style="background-image:url(../assets/images/background/login-register.jpg);">
   <div class="login-box card">
     <div class="card-body">
-      <form [formGroup]="formulario" (ngSubmit)="iniciarSesion()" class="form-horizontal form-material" id="loginform">
-        <div class="form-group m-t-40">
+      <form [formGroup]="formulario" #ngForm="ngForm" (ngSubmit)="iniciarSesion()" class="form-horizontal form-material"
+        id="loginform">
+        <div class="form-group m-t-40"
+          [ngClass]="{'has-danger': erroresService.errores(formulario, 'email', ngForm).hayErrores}">
           <div class="col-xs-12">
             <input formControlName="email" name="email" class="form-control" type="email" required
-              placeholder="{{'Email' | translate}}">
+              placeholder="{{'Email' | translate}}" autocomplete="off">
+          </div>
+          <div class="form-control-feedback" *ngIf="erroresService.errores(formulario, 'email', ngForm).hayErrores">
+            <div *ngIf="erroresService.errores(formulario, 'email').errores?.required">
+              {{'Required' | translate : { name: 'Email' | translate } }}</div>
+            <div *ngIf="erroresService.errores(formulario, 'email').errores?.email">
+              {{'Invalid' | translate : { name: 'Email' | translate } }}
+            </div>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group"
+          [ngClass]="{'has-danger': erroresService.errores(formulario, 'password', ngForm).hayErrores}">
           <div class="col-xs-12">
             <input formControlName="password" name="password" class="form-control" type="password" required
               placeholder="{{'Password' | translate}}">
+          </div>
+          <div class="form-control-feedback" *ngIf="erroresService.errores(formulario, 'password', ngForm).hayErrores">
+            <div *ngIf="erroresService.errores(formulario, 'password').errores?.required">
+              {{'Required' | translate : { name: 'Password' | translate } }}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -35,7 +49,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
             <div class="social">
-              <button type="button" id="btnFacebook" href="" class="btn btn-facebook" data-toggle="tooltip"
+              <button type="button" id="btnFacebook" class="btn btn-facebook" data-toggle="tooltip"
                 title="{{'LoginWithFacebook' | translate}}">
                 <i aria-hidden="true" class="fa fa-facebook"></i>
               </button>
@@ -62,7 +76,7 @@
         </div>
         <div class="form-group ">
           <div class="col-xs-12">
-            <input class="form-control" type="text" required="" placeholder="{{'Mail' | translate}}">
+            <input class="form-control" type="text" required placeholder="{{'Mail' | translate}}">
           </div>
         </div>
         <div class="form-group text-center m-t-20">

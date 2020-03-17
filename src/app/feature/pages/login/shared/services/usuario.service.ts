@@ -15,6 +15,7 @@ import { Tabla } from 'src/app/shared/enums/tablas.enum';
 export class UsuarioService {
   usuario: Usuario;
   token: string;
+  menu: any = [];
 
   constructor(
     private peticionesService: PeticionesService,
@@ -29,18 +30,22 @@ export class UsuarioService {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.usuario = JSON.parse(localStorage.getItem('usuario'));
+      this.menu = JSON.parse(localStorage.getItem('menu'));
     } else {
       this.token = '';
       this.usuario = null;
+      this.menu = [];
     }
   }
 
-  guardarStorage(id: string, token: string, usuario: Usuario) {
+  guardarStorage(id: string, token: string, usuario: Usuario, menu: any) {
     localStorage.setItem('id', id);
     localStorage.setItem('token', token);
     localStorage.setItem('usuario', JSON.stringify(usuario));
+    localStorage.setItem('menu', JSON.stringify(menu));
     this.token = token;
     this.usuario = usuario;
+    this.menu = menu;
   }
 
   estaLogueado() {
@@ -56,7 +61,7 @@ export class UsuarioService {
     }
     return this.peticionesService.post(google ? apiLoginGoogle : apiLogin, token ? { token } : usuario).pipe(
       map((respuesta: any) => {
-        this.guardarStorage(respuesta._id, respuesta.token, respuesta.usuario);
+        this.guardarStorage(respuesta._id, respuesta.token, respuesta.usuario, respuesta.menu);
         return respuesta.usuario.nombre;
       })
     );
@@ -69,8 +74,10 @@ export class UsuarioService {
   cerrarSesion() {
     this.usuario = null;
     this.token = '';
+    this.menu = [];
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
+    localStorage.removeItem('menu');
     this.router.navigate(['/login']);
   }
 
@@ -103,7 +110,7 @@ export class UsuarioService {
       map((respuesta: any) => {
         if (usuario._id === this.usuario._id) {
           this.usuario = respuesta.usuario;
-          this.guardarStorage(respuesta.usuario._id, this.token, respuesta.usuario);
+          this.guardarStorage(respuesta.usuario._id, this.token, respuesta.usuario, this.menu);
           if (localStorage.getItem('email')) {
             localStorage.setItem('email', respuesta.usuario.email);
           }
@@ -123,7 +130,7 @@ export class UsuarioService {
           this.swalService.toast(this.translateService.instant('PhotoUpdateSuccess'));
           if (id === this.usuario._id) {
             this.usuario = respuesta.usuario;
-            this.guardarStorage(respuesta.usuario._id, this.token, respuesta.usuario);
+            this.guardarStorage(respuesta.usuario._id, this.token, respuesta.usuario, this.menu);
           }
           return respuesta;
         })
@@ -135,5 +142,4 @@ export class UsuarioService {
   obtenerRoles() {
     return this.peticionesService.get('assets/data/roles.json');
   }
-
 }

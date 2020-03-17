@@ -1,7 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
 
-import { NopagefoundComponent } from './core/nopagefound/nopagefound.component';
-
 const appRoutes: Routes = [
   {
     path: '',

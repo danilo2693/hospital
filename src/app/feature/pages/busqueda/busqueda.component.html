@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">{{'Users' | translate}}</h4>
+        <table class="table table-hover" *ngIf="usuarios.length > 0">
+          <thead>
+            <tr>
+              <td>{{'Photo' | translate}}</td>
+              <td>{{'Name' | translate}}</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="pointer" [routerLink]="['/usuarios']" *ngFor="let usuario of usuarios; trackBy: '_id' | trackBy">
+              <td>
+                <img class="img-w50 img-circle pointer" [src]="usuario.img | imagen:'usuario' " />
+              </td>
+              <td>
+                {{usuario.nombre}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="alert alert-info" *ngIf="usuarios.length === 0">
+          {{'NoRecords' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">{{'Doctors' | translate}}</h4>
+        <table class="table table-hover" *ngIf="medicos.length > 0">
+          <thead>
+            <tr>
+              <td>{{'Photo' | translate}}</td>
+              <td>{{'Name' | translate}}</td>
+              <td>{{'Hospital' | translate}}</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="pointer" *ngFor="let medico of medicos; trackBy: '_id' | trackBy"
+              [routerLink]="['/doctor', medico._id]">
+              <td>
+                <img class="img-w50 img-circle pointer" [src]="medico.img | imagen:'medico' " />
+              </td>
+              <td>
+                {{medico.nombre}}</td>
+              <td>
+                {{medico.hospital.nombre}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="alert alert-info" *ngIf="medicos.length === 0">
+          {{'NoRecords' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">{{'Hospitals' | translate}}</h4>
+        <table class="table table-hover" *ngIf="hospitales.length > 0">
+          <thead>
+            <tr>
+              <td>{{'Photo' | translate}}</td>
+              <td>{{'Name' | translate}}</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="pointer" [routerLink]="['/hospitals']"
+              *ngFor="let hospital of hospitales; trackBy: '_id' | trackBy">
+              <td>
+                <img class="img-w50 img-circle pointer" [src]="hospital.img | imagen:'hospital' " />
+              </td>
+              <td>
+                {{hospital.nombre}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="alert alert-info" *ngIf="hospitales.length === 0">
+          {{'NoRecords' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

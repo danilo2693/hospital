@@ -3,32 +3,43 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">{{id ==='new' ? ('CreateDoctor' | translate) : ('EditDoctor' | translate)}}</h4>
-        <form [formGroup]="formularioMedico" class="form p-t-20" (ngSubmit)="crearOEditarMedico()">
-          <div class="form-group">
+        <form [formGroup]="formularioMedico" #ngForm="ngForm" class="form p-t-20" (ngSubmit)="crearOEditarMedico()">
+          <div class="form-group"
+            [ngClass]="{'has-danger': erroresService.errores(formularioMedico, 'nombre', ngForm).hayErrores}">
             <label for="doctorName">{{'DoctorName' | translate}}</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="ti-user"></i></div>
               <input formControlName="nombre" type="email" class="form-control" id="doctorName"
                 placeholder="{{'DoctorName' | translate}}" autocomplete="off">
             </div>
+            <div class="form-control-feedback"
+              *ngIf="erroresService.errores(formularioMedico, 'nombre', ngForm).hayErrores">
+              <div *ngIf="erroresService.errores(formularioMedico, 'nombre').errores?.required">
+                {{'Required' | translate : { name: 'Name' | translate } }}</div>
+            </div>
           </div>
-          <div class="form-group">
+          <div class="form-group"
+            [ngClass]="{'has-danger': erroresService.errores(formularioMedico, 'hospital', ngForm).hayErrores} ">
             <label for="">{{'Hospital' | translate}}</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="ti-plus"></i></div>
-              <select (change)="cambioHospital()" formControlName="hospital" name="hospital"
-                class="form-control">
+              <select (change)="cambioHospital()" formControlName="hospital" name="hospital" class="form-control">
                 <option [ngValue]="null">{{'SelectAHospital' | translate}}</option>
                 <option *ngFor="let hospital of hospitales" [ngValue]="hospital">
                   {{ hospital.nombre }}
                 </option>
               </select>
             </div>
+            <div class="form-control-feedback"
+              *ngIf="erroresService.errores(formularioMedico, 'hospital', ngForm).hayErrores">
+              <div *ngIf="erroresService.errores(formularioMedico, 'hospital').errores?.required">
+                {{'Required' | translate : { name: 'HospitalName' | translate } }}</div>
+            </div>
           </div>
           <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
             <i class="fa fa-save"></i>
             {{id ==='new' ? ('Save' | translate) : ('Edit' | translate)}}</button>
-          <a [routerLink]="'/doctors'" class="btn btn-inverse waves-effect waves-light">{{'Cancel' | translate}}</a>
+          <span (click)="cancelar()" class="btn btn-inverse waves-effect waves-light">{{'Cancel' | translate}}</span>
         </form>
       </div>
     </div>
@@ -48,8 +59,8 @@
         <h6 class="card-subtitle">{{'ChoosePhoto' | translate}}</h6>
         <form [formGroup]="uploadImageService.formularioImagen" (ngSubmit)="uploadImageService.subirImagen()"
           class="form p-t-20">
-          <img class="rounded img-fluid" *ngIf="!uploadImageService.imagenTemporal" [src]="formularioMedico.value.img | imagen :'medico'"
-            class="w150" />
+          <img class="rounded img-fluid" *ngIf="!uploadImageService.imagenTemporal"
+            [src]="formularioMedico.value.img | imagen :'medico'" class="w150" />
           <img class="rounded img-fluid" *ngIf="uploadImageService.imagenTemporal"
             [src]="uploadImageService.imagenTemporal" class="w150" />
           <label class="btn btn-info custom-input-btn btn-imagen">

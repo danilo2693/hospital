@@ -12,6 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Medico } from './shared/models/medico.model';
 import { map } from 'rxjs/operators';
 import { Icon } from 'src/app/shared/enums/icon.enum';
+import { ErroresService } from 'src/app/shared/services/errores.service';
 
 @Component({
   selector: 'app-medico',
@@ -31,7 +32,8 @@ export class MedicoComponent implements OnInit {
     private translateService: TranslateService,
     private swalService: SwalService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public erroresService: ErroresService
   ) {}
 
   ngOnInit() {
@@ -113,7 +115,14 @@ export class MedicoComponent implements OnInit {
   }
 
   cambioHospital(idHospital?: string) {
-    const id = idHospital ? idHospital : this.formularioMedico.value.hospital._id;
-    this.informacionHospitalSeleccionado = this.hospitalService.obtenerHospitalPorId(id);
+    const hospitalFormulario = this.formularioMedico.value.hospital;
+    if (hospitalFormulario || idHospital) {
+      const id = idHospital ? idHospital : hospitalFormulario._id;
+      this.informacionHospitalSeleccionado = this.hospitalService.obtenerHospitalPorId(id);
+    }
+  }
+
+  cancelar() {
+    window.history.back();
   }
 }

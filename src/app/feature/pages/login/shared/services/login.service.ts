@@ -5,6 +5,7 @@ import { UsuarioService } from './usuario.service';
 import { Usuario } from '../models/usuario.model';
 import { Router } from '@angular/router';
 import { SwalService } from 'src/app/shared/services/swal.service';
+import { Icon } from 'src/app/shared/enums/icon.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -31,10 +32,15 @@ export class LoginService {
       return;
     }
     const usuario = new Usuario(null, formulario.value.email, formulario.value.password);
-    this.usuarioService.iniciarSesion(usuario, !!formulario.value.recordarme).subscribe((nombreUsuario: string) => {
-      formulario.reset();
-      this.bienvenidoYRedireccionDashboard(nombreUsuario);
-    });
+    this.usuarioService.iniciarSesion(usuario, !!formulario.value.recordarme).subscribe(
+      (nombreUsuario: string) => {
+        formulario.reset();
+        this.bienvenidoYRedireccionDashboard(nombreUsuario);
+      },
+      error => {
+        this.swalService.toast(this.translateService.instant('ErrorCredentials'), Icon.ERROR, 'top-end', 2000);
+      }
+    );
   }
 
   iniciarSesionGoogle(token) {

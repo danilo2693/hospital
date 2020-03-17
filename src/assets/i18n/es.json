@@ -19,6 +19,7 @@
   "ConfirmPassword": "Confirmar contraseña",
   "AcceptAll": "Acepto todos los",
   "Terms": "términos",
+  "AcceptAllTerms": "\"Acepto todos los términos\"",
   "Register": "Registrarse",
   "AlreadyHaveAccount": "¿Ya tienes una cuenta?",
   "Login": "Iniciar sesión",
@@ -98,5 +99,13 @@
   "CreateDoctorSuccess": "Médico creado correctamente",
   "UpdateDoctorSuccess": "Médico actualizado correctamente",
   "DeleteDoctorSuccess": "Médico eliminado correctamente",
-  "SelectAHospital": "Seleccione un hospital"
+  "SelectAHospital": "Seleccione un hospital",
+  "NoRecords": "No hay registros",
+  "AllRightsReserved": "Todos los derechos reservados",
+  "LinkNotFound": "Este enlace no se encuentra en nuestro sitio",
+  "PageNotFound": "¡Página no encontrada!",
+  "BackToHome": "Back to home",
+  "Required": "{{name}} requerido",
+  "Invalid": "{{name}} inválido",
+  "SearchAndEnter": "Escribe y presiona la tecla \"enter\""
 }

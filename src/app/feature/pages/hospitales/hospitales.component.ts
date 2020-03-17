@@ -42,9 +42,7 @@ export class HospitalesComponent implements OnInit {
 
   actualizarHospitales(respuesta) {
     this.cantidadHospitales = respuesta.total;
-    console.log(respuesta);
     const hospitales: Hospital[] = respuesta.hospitales ? respuesta.hospitales : respuesta.hospital;
-    console.log(hospitales);
     this.hospitalesFormularioService.agregarVariosHospitales(hospitales);
     this.cargando = false;
   }

@@ -12,8 +12,15 @@ export class LanguageService {
       const lenguajeSessionStorage = localStorage.getItem('locale');
       translateService.use(lenguajeSessionStorage.match(/es|en/) ? lenguajeSessionStorage : 'es');
     } else {
-      localStorage.setItem('locale', 'es');
-      translateService.setDefaultLang('es');
+      const browserLanguage = translateService.getBrowserLang();
+      let currentLanguage;
+      if (translateService.getLangs().includes(browserLanguage)) {
+        currentLanguage = browserLanguage;
+      } else {
+        currentLanguage = 'es';
+      }
+      localStorage.setItem('locale', currentLanguage);
+      translateService.setDefaultLang(currentLanguage);
     }
   }
 

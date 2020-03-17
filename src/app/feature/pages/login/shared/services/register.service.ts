@@ -25,7 +25,7 @@ export class RegisterService {
         email: new FormControl(null, [Validators.required, Validators.email]),
         password: new FormControl(null, Validators.required),
         password2: new FormControl(null, Validators.required),
-        condiciones: new FormControl(false)
+        condiciones: new FormControl(false, Validators.requiredTrue)
       },
       { validators: this.sonIguales('password', 'password2') }
     );

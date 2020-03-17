@@ -24,12 +24,12 @@ export class SwalService {
     Swal.fire(title, text, icon as SweetAlertIcon);
   }
 
-  toast(title: string, icon = Icon.SUCCESS, position = 'top-start') {
+  toast(title: string, icon = Icon.SUCCESS, position = 'top-start', timer = 3000) {
     Swal.mixin({
       toast: true,
       position: position as SweetAlertPosition,
       showConfirmButton: false,
-      timer: 3000,
+      timer,
       timerProgressBar: true,
       onOpen: toast => {
         toast.addEventListener('mouseenter', Swal.stopTimer);

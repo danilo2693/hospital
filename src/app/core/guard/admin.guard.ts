@@ -5,14 +5,13 @@ import { UsuarioService } from '../../feature/pages/login/shared/services/usuari
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuardGuard implements CanActivate {
-  constructor(private usuarioService: UsuarioService, private router: Router) {}
-
-  canActivate(): boolean {
-    if (this.usuarioService.estaLogueado()) {
+export class AdminGuard implements CanActivate {
+  constructor(public usuarioService: UsuarioService, private router: Router) {}
+  canActivate() {
+    if (this.usuarioService.usuario.role === 'ADMIN_ROLE') {
       return true;
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/dashboard']);
       return false;
     }
   }

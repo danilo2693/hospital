@@ -4,6 +4,7 @@ import { UsuarioService } from '../login/shared/services/usuario.service';
 import { FormGroup } from '@angular/forms';
 import { ProfileService } from './shared/services/profile.service';
 import { UploadImageService } from 'src/app/shared/services/upload-image.service';
+import { ErroresService } from 'src/app/shared/services/errores.service';
 
 @Component({
   selector: 'app-profile',
@@ -19,7 +20,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     public usuarioService: UsuarioService,
     private profileService: ProfileService,
-    public uploadImageService: UploadImageService
+    public uploadImageService: UploadImageService,
+    public erroresService: ErroresService
   ) {
     this.usuario = this.usuarioService.usuario;
     this.formulario = this.profileService.inicializarFormularioProfile(this.usuario);
