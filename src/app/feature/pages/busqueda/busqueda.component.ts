@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BusquedaService } from './shared/services/busqueda.service';
-import { Usuario } from '../login/shared/models/usuario.model';
-import { Medico } from '../medicos/shared/models/medico.model';
-import { Hospital } from '../hospitales/shared/models/hospital.model';
+import { Usuario } from '../../login-register/login/shared/models/usuario.model';
+import { Medico } from '../mantenimientos/medicos/shared/models/medico.model';
+import { Hospital } from '../mantenimientos/hospitales/shared/models/hospital.model';
 
 @Component({
   selector: 'app-busqueda',

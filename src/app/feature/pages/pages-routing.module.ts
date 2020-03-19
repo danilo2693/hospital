@@ -3,47 +3,45 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
-import { Graficas1Component } from './graficas/graficas1/graficas1.component';
-import { LoginComponent } from './login/login.component';
 import { PagesComponent } from './pages.component';
-import { NopagefoundComponent } from '../../core/nopagefound/nopagefound.component';
-import { RegisterComponent } from './login/register.component';
-import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-import { LoginGuardGuard } from 'src/app/core/guard/login-guard.guard';
-import { ProfileComponent } from './profile/profile.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { HospitalesComponent } from './hospitales/hospitales.component';
-import { MedicosComponent } from './medicos/medicos.component';
-import { MedicoComponent } from './medicos/medico.component';
+import { LoginGuard } from 'src/app/core/guard/login.guard';
 import { BusquedaComponent } from './busqueda/busqueda.component';
-import { AdminGuard } from '../../core/guard/admin.guard';
+import { VerificarTokenGuard } from '../../core/guard/verificar-token.guard';
 
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: '/dashboard'
+  },
+  {
+    path: '',
     component: PagesComponent,
-    canActivate: [LoginGuardGuard],
+    canActivate: [LoginGuard],
+    canActivateChild: [VerificarTokenGuard],
     children: [
-      { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        data: { title: 'Dashboard' }
+      },
       { path: 'progress', component: ProgressComponent, data: { title: 'ProgressBar' } },
-      { path: 'graficas1', component: Graficas1Component, data: { title: 'Graphics' } },
       { path: 'promesas', component: PromesasComponent, data: { title: 'Promises' } },
       { path: 'rxjs', component: RxjsComponent, data: { title: 'Rxjs' } },
-      { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Settings' } },
-      { path: 'profile', component: ProfileComponent, data: { title: 'Profile' } },
       { path: 'search/:term', component: BusquedaComponent, data: { title: 'Search' } },
-      { path: 'users', component: UsuariosComponent, canActivate: [AdminGuard], data: { title: 'Users' } },
-      { path: 'hospitals', component: HospitalesComponent, data: { title: 'Hospitals' } },
-      { path: 'doctors', component: MedicosComponent, data: { title: 'Doctors' } },
-      { path: 'doctor/:id', component: MedicoComponent, data: { title: 'Doctor' } },
-      { path: '', pathMatch: 'full', redirectTo: '/dashboard' }
+      {
+        path: '',
+        loadChildren: () => import('src/app/feature/pages/account/account.module').then(m => m.AccountModule)
+      },
+      {
+        path: 'maintenance',
+        loadChildren: () =>
+          import('src/app/feature/pages/mantenimientos/mantenimientos.module').then(m => m.MantenimientosModule)
+      }
     ]
-  },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: '**', component: NopagefoundComponent }
+  }
 ];
 
 @NgModule({

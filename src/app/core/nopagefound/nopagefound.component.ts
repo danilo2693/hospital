@@ -13,5 +13,3 @@ export class NopagefoundComponent implements OnInit {
     init_plugins();
   }
 }
-
-

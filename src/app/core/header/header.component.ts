@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from 'src/app/feature/pages/login/shared/services/usuario.service';
 import { LanguageService } from '../services/language.service';
-import { Usuario } from '../../feature/pages/login/shared/models/usuario.model';
 import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/feature/login-register/login/shared/services/usuario.service';
 
 @Component({
   selector: 'app-header',

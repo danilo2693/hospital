@@ -54,32 +54,21 @@ export class PeticionesService {
 
   get<T>(serviceUrl: string, opts?: Options): Observable<T> {
     const ropts = this.createOptions(opts);
-    return this.http
-      .get(serviceUrl, ropts)
-      .pipe(map(response => response as T));
+    return this.http.get(serviceUrl, ropts).pipe(map(response => response as T));
   }
 
   post<T, R>(serviceUrl: string, body: T, opts?: Options, witFormData?: any): Observable<R> {
     const ropts = this.createOptions(opts);
-
-    return this.http
-      .post(serviceUrl, body, witFormData ? undefined : ropts)
-      .pipe(map(response => response as R));
+    return this.http.post(serviceUrl, body, witFormData ? undefined : ropts).pipe(map(response => response as R));
   }
 
   put<T, R>(serviceUrl: string, body: T, opts?: Options, witFormData?: any): Observable<R> {
     const ropts = this.createOptions(opts);
-
-    return this.http
-      .put(serviceUrl, body, witFormData ? undefined : ropts)
-      .pipe(map(response => response as R));
+    return this.http.put(serviceUrl, body, witFormData ? undefined : ropts).pipe(map(response => response as R));
   }
 
   delete<T, R>(serviceUrl: string, opts?: Options): Observable<R> {
     const ropts = this.createOptions(opts);
-
-    return this.http
-      .delete(serviceUrl, ropts)
-      .pipe(map(response => response as R));
+    return this.http.delete(serviceUrl, ropts).pipe(map(response => response as R));
   }
 }

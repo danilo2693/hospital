@@ -12,7 +12,15 @@ import { BuscarColeccionComponent } from './buscar-coleccion/buscar-coleccion.co
 
 @NgModule({
   declarations: [IncrementadorComponent, GraficaDonaComponent, ModalUploadImageComponent, BuscarColeccionComponent],
-  imports: [CommonModule, FormsModule, TranslateModule, ReactiveFormsModule, HttpClientModule, ChartsModule, PipesModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    TranslateModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ChartsModule,
+    PipesModule
+  ],
   exports: [
     FormsModule,
     IncrementadorComponent,

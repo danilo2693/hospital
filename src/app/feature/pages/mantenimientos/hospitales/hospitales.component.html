@@ -1,0 +1,71 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="input-group">
+          <input #input (keyup)="buscarHospitales(input.value)" type="text" class="form-control"
+            placeholder="{{'SearchHospital' | translate}}">
+          <div (click)="limpiarHospitales(input)" class="input-group-addon pointer" data-toggle="tooltip"
+            title="{{'Clear' | translate}}"><i class="ti-close"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-right" style="margin-bottom: 5px;">
+          <button (click)="alertaCrearHospital()" class="btn waves-effect waves-light btn-rounded btn-success">
+            <i class="fa fa-plus"></i> {{'CreateHospital' | translate}}
+          </button>
+        </div>
+        <h3 class="card-title">{{'RegisteredHospitals' | translate}} (<small>{{cantidadHospitales}}</small>)</h3>
+        <form [formGroup]="hospitalesFormularioService.hospitalForm">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th class="w70">{{'Photo' | translate}}</th>
+                  <th>{{'Name' | translate}}</th>
+                  <th class="w120">{{'Options' | translate}}</th>
+                </tr>
+              </thead>
+              <tbody class="td-vertical-align" formArrayName="hospitales">
+                <tr
+                  *ngFor="let hospital of hospitalesFormularioService.hospitalFormularioValue; let i=index;let l=last;trackBy: '_id' | trackBy"
+                  [formGroupName]="i">
+                  <td>
+                    <img class="img-w50 pointer" [src]="hospital.img | imagen:'hospital' " data-toggle="tooltip"
+                      title="{{'ChangePhoto' | translate}}"
+                      (click)="uploadImageService.mostrarModal(hospital.img, 'hospital', hospital._id)" />
+                  </td>
+                  <td>
+                    <input type="text" formControlName="nombre" class="form-control"
+                      placeholder="{{'HospitalName' | translate}}" [value]="hospital.nombre" /></td>
+                  <td style="text-align: center;" class="opciones-m2">
+                    <button (click)="actualizarHospital(hospital)" class="btn btn-primary">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    <button (click)="confirmarBorrarHospital(hospital._id, hospital.nombre)" class="btn btn-danger">
+                      <i class="fa fa-trash-o"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </form>
+        <button (click)="cambiarRangoHospitales(-5)" class="btn btn-secondary" [ngClass]="{'ocultar': desde===0}">
+          {{'Previous' | translate}}
+        </button>
+        <button (click)="cambiarRangoHospitales(5)" class="btn btn-secondary"
+          [ngClass]="{'ocultar': (desde+5) >= cantidadHospitales}">
+          {{'Next' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

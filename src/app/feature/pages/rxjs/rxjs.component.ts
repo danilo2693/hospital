@@ -4,11 +4,10 @@ import { retry, map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxjs',
-  templateUrl: './rxjs.component.html',
+  template: ``,
   styles: []
 })
 export class RxjsComponent implements OnInit, OnDestroy {
-
   subscripcion: Subscription;
 
   constructor() {

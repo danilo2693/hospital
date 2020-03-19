@@ -6,8 +6,7 @@ import { apiBusquedaTodo } from 'src/app/shared/config/config';
   providedIn: 'root'
 })
 export class BusquedaService {
-
-  constructor(private peticionesService: PeticionesService) { }
+  constructor(private peticionesService: PeticionesService) {}
 
   buscar(termino: string) {
     return this.peticionesService.get(`${apiBusquedaTodo}/${termino}`);

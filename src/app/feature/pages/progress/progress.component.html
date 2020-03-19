@@ -4,11 +4,15 @@
       <div class="card-body">
         <div class="car-title">Barra de progreso</div>
         <div class="progress">
-          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="progresoAzul" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" [style.width]="progresoAzul + '%'" style="width: 75%"></div>
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+            [attr.ariaValuenow]="progresoAzul" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+            [style.width]="progresoAzul + '%'" style="width: 75%"></div>
         </div>
         <br />
         <div class="progress">
-          <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" [attr.ariaValuenow]="progresoRojo" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" [style.width]="progresoRojo + '%'" style="width: 75%"></div>
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar"
+            [attr.ariaValuenow]="progresoRojo" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+            [style.width]="progresoRojo + '%'" style="width: 75%"></div>
         </div>
       </div>
     </div>
@@ -18,14 +22,16 @@
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-        <app-incrementador [progreso]="progresoAzul" (cambioElProgreso)="progresoAzul = $event" leyenda="Modificar azul"></app-incrementador>
+        <app-incrementador [progreso]="progresoAzul" (cambioElProgreso)="progresoAzul = $event"
+          leyenda="Modificar azul"></app-incrementador>
       </div>
     </div>
   </div>
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-      <app-incrementador [progreso]="progresoRojo" (cambioElProgreso)="progresoRojo = $event" leyenda="Modificar rojo"></app-incrementador>
+        <app-incrementador [progreso]="progresoRojo" (cambioElProgreso)="progresoRojo = $event"
+          leyenda="Modificar rojo"></app-incrementador>
       </div>
     </div>
   </div>

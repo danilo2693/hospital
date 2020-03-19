@@ -2,10 +2,10 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { SwalService } from './swal.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Icon } from '../enums/icon.enum';
-import { UsuarioService } from 'src/app/feature/pages/login/shared/services/usuario.service';
 import { FormGroup } from '@angular/forms';
-import { Usuario } from 'src/app/feature/pages/login/shared/models/usuario.model';
-import { ProfileService } from 'src/app/feature/pages/profile/shared/services/profile.service';
+import { Usuario } from 'src/app/feature/login-register/login/shared/models/usuario.model';
+import { UsuarioService } from 'src/app/feature/login-register/login/shared/services/usuario.service';
+import { ProfileService } from 'src/app/feature/pages/account/profile/shared/services/profile.service';
 
 @Injectable({
   providedIn: 'root'

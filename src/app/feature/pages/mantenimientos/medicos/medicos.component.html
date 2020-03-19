@@ -1,0 +1,63 @@
+<app-buscar-coleccion [defaultPlaceholder]="'SearchDoctor'" (eventoBuscar)="buscarMedico($event)"
+  (eventoLimpiar)="limpiarMedicos()">
+</app-buscar-coleccion>
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-right" style="margin-bottom: 5px;">
+          <button [routerLink]="['/maintenance/doctor', 'new']"
+            class="btn waves-effect waves-light btn-rounded btn-success">
+            <i class="fa fa-plus"></i> {{'CreateDoctor' | translate}}
+          </button>
+        </div>
+        <h3 class="card-title">{{'RegisteredDoctors' | translate}} (<small>{{cantidadMedicos}}</small>)</h3>
+        <form [formGroup]="medicosFormularioService.medicoForm">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th class="w70">{{'Photo' | translate}}</th>
+                  <th>{{'Doctor' | translate}}</th>
+                  <th>{{'Hospital' | translate}}</th>
+                  <th class="w120">{{'Options' | translate}}</th>
+                </tr>
+              </thead>
+              <tbody class="td-vertical-align" formArrayName="medicos">
+                <tr
+                  *ngFor="let medico of medicosFormularioService.medicoFormularioValue; let i=index;let l=last; trackBy: '_id' | trackBy"
+                  [formGroupName]="i">
+                  <td>
+                    <img class="img-w50 img-circle pointer" [src]="medico.img | imagen:'medico' " data-toggle="tooltip"
+                      title="{{'ChangePhoto' | translate}}"
+                      (click)="uploadImageService.mostrarModal(medico.img, 'medico', medico._id)" />
+                  </td>
+                  <td>
+                    {{medico.nombre}}</td>
+                  <td>
+                    {{medico.hospital.nombre}}
+                  </td>
+                  <td style="text-align: center;" class="opciones-m2">
+                    <button [routerLink]="['/maintenance/doctor', medico._id]" class="btn btn-primary">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    <button (click)="confirmarBorrarMedico(medico._id, medico.nombre)" class="btn btn-danger">
+                      <i class="fa fa-trash-o"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+        <button (click)="cambiarRangoMedicos(-5)" class="btn btn-secondary" [ngClass]="{'ocultar': desde===0}">
+          {{'Previous' | translate}}
+        </button>
+        <button (click)="cambiarRangoMedicos(5)" class="btn btn-secondary"
+          [ngClass]="{'ocultar': (desde+5) >= cantidadMedicos}">
+          {{'Next' | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

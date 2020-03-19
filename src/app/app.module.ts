@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { APP_ROUTES } from './app-routing.module';
-import { SettingsService } from './feature/pages/account-settings/shared/services/settings.service';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SettingsService } from './feature/pages/account/account-settings/shared/services/settings.service';
+import { LoaderInterceptorService } from './core/interceptor/loader-interceptor.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({

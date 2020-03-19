@@ -10,10 +10,9 @@ export class BuscarColeccionComponent implements OnInit {
   @Output() eventoLimpiar = new EventEmitter<void>();
   @Input() defaultPlaceholder = '';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   buscar(palabra: string) {
     this.eventoBuscar.emit(palabra);

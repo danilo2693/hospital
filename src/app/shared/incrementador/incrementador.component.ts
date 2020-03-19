@@ -4,7 +4,6 @@ import { Component, OnInit, Output, EventEmitter, Input, ViewChild, ElementRef }
   selector: 'app-incrementador',
   templateUrl: './incrementador.component.html'
 })
-
 export class IncrementadorComponent implements OnInit {
   @ViewChild('inputProgreso', { static: false }) inputProgreso: ElementRef;
   @Input() progreso = 10;
@@ -14,20 +13,21 @@ export class IncrementadorComponent implements OnInit {
   @Input() paso = 5;
   @Output() cambioElProgreso = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   cambiarProgreso(valor: number) {
-    if (this.progreso >= (this.progresoMinimo + this.paso) && this.progreso <= (this.progresoMaximo - this.paso)
-      || (this.progreso === this.progresoMinimo && valor === this.paso)
-      || (this.progreso === this.progresoMaximo && valor === -this.paso)) {
-        this.progreso += valor;
+    if (
+      (this.progreso >= this.progresoMinimo + this.paso && this.progreso <= this.progresoMaximo - this.paso) ||
+      (this.progreso === this.progresoMinimo && valor === this.paso) ||
+      (this.progreso === this.progresoMaximo && valor === -this.paso)
+    ) {
+      this.progreso += valor;
     } else {
       return;
     }
-    this.cambioElProgreso.emit(this.progreso) ;
+    this.cambioElProgreso.emit(this.progreso);
     this.inputProgreso.nativeElement.focus();
   }
 
@@ -40,7 +40,6 @@ export class IncrementadorComponent implements OnInit {
       this.progreso = nuevoValorProgreso;
     }
     this.inputProgreso.nativeElement.value = this.progreso;
-    this.cambioElProgreso.emit(this.progreso) ;
+    this.cambioElProgreso.emit(this.progreso);
   }
-
 }
