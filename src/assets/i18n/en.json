@@ -107,5 +107,17 @@
   "BackToHome": "Back to home",
   "Required": "{{name}} required",
   "Invalid": "{{name}} invalid",
-  "SearchAndEnter": "Search & enter"
+  "SearchAndEnter": "Search & enter",
+  "DescriptionRecoveryPassword": "An email will be sent to you with a link for password recovery.",
+  "Recovery": "Recovery",
+  "SendRecoveryEmailSuccessfully": "An email has been sent to {{email}}. Please check your inbox and follow the instructions.",
+  "PasswordUpdateSuccess": "Password update success",
+  "GoodJob": "Good job",
+  "ClickHere": "Click here",
+  "LogInAgain": "to log in again",
+  "ErrorUserNotFound": "User not found",
+  "PasswordCanNotReset": "Password cannot reset",
+  "TokenHasExpired": "Link has expired",
+  "TokenRequired": "Invalid link",
+  "InvalidUrl": "Invalid link"
 }

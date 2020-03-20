@@ -10,3 +10,4 @@ export const apiBusquedaTodo = `${urlPrincipal}/busqueda/todo`;
 export const apiBusquedaColeccion = `${urlPrincipal}/busqueda/coleccion`;
 export const apiHospital = `${urlPrincipal}/hospital`;
 export const apiMedico = `${urlPrincipal}/medico`;
+export const apiContrasenia = `${urlPrincipal}/contrasenia`;

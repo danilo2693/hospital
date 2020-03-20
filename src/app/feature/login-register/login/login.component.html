@@ -36,7 +36,7 @@
                 class="filled-in chk-col-light-blue">
               <label for="checkbox-signup"> {{'RememberMe' | translate}} </label>
             </div>
-            <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i
+            <a routerLink="/recovery-password" id="to-recover" class="text-dark pull-right"><i
                 class="fa fa-lock m-r-5"></i>{{'ForgetPassword' | translate}}</a>
           </div>
         </div>
@@ -49,10 +49,10 @@
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
             <div class="social">
-              <button type="button" id="btnFacebook" class="btn btn-facebook" data-toggle="tooltip"
+              <!-- <button type="button" id="btnFacebook" class="btn btn-facebook" data-toggle="tooltip"
                 title="{{'LoginWithFacebook' | translate}}">
                 <i aria-hidden="true" class="fa fa-facebook"></i>
-              </button>
+              </button> -->
               <button type="button" id="btnGoogle" href="" class="btn btn-googleplus" data-toggle="tooltip"
                 title="{{'LoginWithGoogle' | translate}}">
                 <i aria-hidden="true" class="fa fa-google-plus"></i>
@@ -64,25 +64,6 @@
           <div class="col-sm-12 text-center">
             {{'DontHaveAccount' | translate}} <a routerLink="/register"
               class="text-primary m-l-5"><b>{{'Register' | translate}}</b></a>
-          </div>
-        </div>
-      </form>
-      <form class="form-horizontal" id="recoverform" action="index.html">
-        <div class="form-group ">
-          <div class="col-xs-12">
-            <h3>{{'RecoverPassword' | translate}}</h3>
-            <p class="text-muted">{{'RecoverInstruction' | translate}}</p>
-          </div>
-        </div>
-        <div class="form-group ">
-          <div class="col-xs-12">
-            <input class="form-control" type="text" required placeholder="{{'Mail' | translate}}">
-          </div>
-        </div>
-        <div class="form-group text-center m-t-20">
-          <div class="col-xs-12">
-            <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light"
-              type="submit">{{'Recover' | translate}}</button>
           </div>
         </div>
       </form>

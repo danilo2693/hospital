@@ -74,14 +74,15 @@ export class SwalService {
     icon = 'warning',
     confirmButtonText = '',
     cancelButtonText = '',
-    { clickConfirm = () => {}, clickCancel = () => {} } = {}
+    { clickConfirm = () => {}, clickCancel = () => {} } = {},
+    showCancelButton = true
   ) {
     this.iniciarObservablesConfirm();
     return Swal.fire({
       title,
       text,
       icon: icon as SweetAlertIcon,
-      showCancelButton: true,
+      showCancelButton,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText,

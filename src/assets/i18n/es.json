@@ -107,5 +107,18 @@
   "BackToHome": "Back to home",
   "Required": "{{name}} requerido",
   "Invalid": "{{name}} inválido",
-  "SearchAndEnter": "Escribe y presiona la tecla \"enter\""
+  "SearchAndEnter": "Escribe y presiona la tecla \"enter\"",
+  "DescriptionRecoveryPassword": "Se le enviará un correo con un enlace para la recuperación de la contraseña.",
+  "Recovery": "Recuperar",
+  "SendRecoveryEmailSuccessfully": "Se ha enviado un correo a: {{email}}. Por favor revisa tu bandeja de entrada y sigue las instrucciones.",
+  "PasswordUpdateSuccess": "Contraseña actualizada correctamente",
+  "GoodJob": "¡Buen trabajo!",
+  "ClickHere": "Click aquí",
+  "LogInAgain": "para iniciar sesión nuevamente",
+  "ErrorUserNotFound": "El usuario no se encuentra registrado",
+  "PasswordCanNotReset": "La contraseña no se pudo cambiar",
+  "TokenHasExpired": "Este enlace está caducado",
+  "TokenRequired": "Este enlace es no es válido",
+  "InvalidUrl": "Este enlace es no es válido"
+
 }

@@ -9,11 +9,14 @@ export class ErroresService {
   constructor() {}
 
   errores(formulario: FormGroup, nombreControl: string, ngForm?: any) {
-    const errores = formulario.get(nombreControl).errors;
-    return {
-      hayErrores:
-        (!!errores && formulario.get(nombreControl).dirty) || (isNullOrUndefined(ngForm) ? false : ngForm.submitted),
-      errores
-    };
+    if (formulario) {
+      const errores = formulario.get(nombreControl).errors;
+      return {
+        hayErrores:
+          (!!errores && formulario.get(nombreControl).dirty) || (isNullOrUndefined(ngForm) ? false : ngForm.submitted),
+        errores
+      };
+    }
+    return {hayErrores: false};
   }
 }
